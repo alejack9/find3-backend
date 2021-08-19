@@ -49,9 +49,9 @@ export const builder = (loc: LocationDTO): SignalFingerprints => {
       wifi: loc.s.wifi,
     },
     gps: {
-      latitude: loc.gps.lat,
-      longitude: loc.gps.lon,
-      altitude: loc.gps.alt,
+      latitude: loc.gps?.lat || undefined,
+      longitude: loc.gps?.lon || undefined,
+      altitude: loc.gps?.alt || undefined,
     },
   };
 };
