@@ -16,7 +16,7 @@ export class SignalController {
   async saveSignals(
     @Body(new SignalsDtoTransformerPipe()) obj: SignalFingerprints,
   ) {
-    console.log('new request');
+    console.log(`new request for room: ${obj.location}`);
     return await this.locationSaverService.save(obj);
   }
 }
