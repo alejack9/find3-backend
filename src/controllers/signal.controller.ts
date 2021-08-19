@@ -8,13 +8,14 @@ export class SignalController {
   constructor(private readonly locationSaverService: LocationSaverServer) {}
 
   @Get()
-  getHello(): string {
+  ping(): string {
     return 'pong';
   }
 
   @Post()
-  async test1(@Body(new SignalsDtoTransformerPipe()) obj: SignalFingerprints) {
-    await this.locationSaverService.save(obj);
-    return 'OK';
+  async saveSignals(
+    @Body(new SignalsDtoTransformerPipe()) obj: SignalFingerprints,
+  ) {
+    return await this.locationSaverService.save(obj);
   }
 }

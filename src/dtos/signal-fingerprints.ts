@@ -1,14 +1,36 @@
 import { LocationDTO } from './location.dto';
+import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
-export interface SignalFingerprints {
+export type SignalFingerprintsDocument = SignalFingerprints & Document;
+
+@Schema()
+export class SignalFingerprints {
+  @Prop()
   family: string;
+  @Prop()
   device: string;
+  @Prop()
   location: string;
+  @Prop()
   timestamp: number;
+  @Prop(
+    raw({
+      bluetooth: { type: Map },
+      wifi: { type: Map },
+    }),
+  )
   signals: {
-    bluetooth: {};
-    wifi: {};
+    bluetooth: Map<string, string>;
+    wifi: Map<string, string>;
   };
+  @Prop(
+    raw({
+      latitude: { type: Number },
+      longitude: { type: Number },
+      altitude: { type: Number },
+    }),
+  )
   gps: {
     latitude?: number;
     longitude?: number;
@@ -33,3 +55,6 @@ export const builder = (loc: LocationDTO): SignalFingerprints => {
     },
   };
 };
+
+export const SignalFingerprintsSchema =
+  SchemaFactory.createForClass(SignalFingerprints);

@@ -4,8 +4,8 @@ export interface LocationDTO {
   l: string;
   t: number;
   s: {
-    bluetooth: {};
-    wifi: {};
+    bluetooth: Map<string, string>;
+    wifi: Map<string, string>;
   };
   gps: {
     lat?: number;
