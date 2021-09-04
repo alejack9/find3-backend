@@ -21,20 +21,24 @@ export class SignalFingerprints {
     }),
   )
   signals: {
-    bluetooth: Map<string, string>;
-    wifi: Map<string, string>;
+    bluetooth: Map<string, number>;
+    wifi: Map<string, number>;
   };
   @Prop(
     raw({
       latitude: { type: Number },
       longitude: { type: Number },
       altitude: { type: Number },
+      accuracy: { type: Number },
+      altAccuracy: { type: Number },
     }),
   )
   gps: {
     latitude?: number;
     longitude?: number;
     altitude?: number;
+    accuracy?: number;
+    altAccuracy?: number;
   };
 }
 
@@ -52,6 +56,8 @@ export const builder = (loc: LocationDTO): SignalFingerprints => {
       latitude: loc.gps?.lat || undefined,
       longitude: loc.gps?.lon || undefined,
       altitude: loc.gps?.alt || undefined,
+      accuracy: loc.gps?.accuracy || undefined,
+      altAccuracy: loc.gps?.altAccuracy || undefined,
     },
   };
 };
