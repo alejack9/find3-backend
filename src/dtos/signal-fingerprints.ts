@@ -49,8 +49,8 @@ export const builder = (loc: LocationDTO): SignalFingerprints => {
     timestamp: loc.t,
     location: loc.l,
     signals: {
-      bluetooth: loc.s.bluetooth,
-      wifi: loc.s.wifi,
+      bluetooth: new Map<string, number>(loc.s.bluetooth),
+      wifi: new Map<string, number>(loc.s.wifi),
     },
     gps: {
       latitude: loc.gps?.lat || undefined,
