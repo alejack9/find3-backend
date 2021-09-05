@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { SignalFingerprints } from 'src/dtos/signal-fingerprints';
 import { SignalsDtoTransformerPipe } from 'src/pipes/signals-dto-transformer.pipe';
 import { LocationSaverServer } from '../services/location-saver.service';
